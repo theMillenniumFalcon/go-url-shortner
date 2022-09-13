@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/asaskevich/govalidator"
 	"github.com/go-redis/redis/v8"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
@@ -54,7 +55,7 @@ func ShortenURL(c *fiber.Ctx) error {
 	}
 
 	// check if the input is an actual URL or not
-	if !goValidator.isURl(body.URL) {
+	if !govalidator.IsURL(body.URL) {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid URL"})
 	}
 

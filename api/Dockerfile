@@ -12,7 +12,7 @@ RUN go build -o main .
 
 FROM alpine
 
-RUN addUser -S -D -H /app appUser
+RUN addUser -S -D -H -h /app appUser
 
 USER appUser
 
